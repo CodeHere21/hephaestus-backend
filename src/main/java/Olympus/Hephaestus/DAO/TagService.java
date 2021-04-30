@@ -1,0 +1,65 @@
+package Olympus.Hephaestus.DAO;
+
+import Olympus.Hephaestus.Model.Post;
+import Olympus.Hephaestus.Model.Tag;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class TagService implements DAO<Tag>{
+
+    private static final Logger log = LoggerFactory.getLogger(TagService.class);
+    private JdbcTemplate jdbcTemplate;
+    private RowMapper<Tag> rows=(rs, rowNum)->{
+        Tag tag=new Tag();
+        tag.setId(rs.getInt("ID"));
+        tag.setLabel(rs.getString("LABEL"));
+        tag.setPostId(rs.getInt("POST_ID"));
+        return tag;
+    };
+
+
+    @Autowired
+    public TagService(JdbcTemplate j){jdbcTemplate=j;}
+
+    @Override
+    public List<Tag> list() {
+        String sql="SELECT ID, LABEL, POST_ID FROM TAG";
+        return jdbcTemplate.query(sql,rows);
+    }
+
+    @Override
+    public void create(Tag tag) {
+        String sql="INSERT INTO TAG(LABEL, POST_ID) VALUES(?,?)";
+        jdbcTemplate.update(sql, tag.getLabel(), tag.getPostId());
+    }
+
+    @Override
+    public Optional<Tag> get(int id) {
+        String sql="SELECT ID, LABEL, POST_ID FROM TAG WHERE ID=?";
+        Tag tag=null;
+        try{tag=jdbcTemplate.queryForObject(sql, new Object[]{id}, rows);}
+        catch(DataAccessException e){log.info("Tag not found");}
+        return Optional.ofNullable(tag);
+    }
+
+    @Override
+    public void update(Tag tag, int id) {
+        String sql ="UPDATE TAG SET LABEL=?, POST_ID=? WHERE ID=?";
+        int update=jdbcTemplate.update(sql, tag.getLabel(),tag.getPostId(),id);
+        if(update==1){log.info("Post Updated");}
+    }
+
+    @Override
+    public void delete(int id) {
+        jdbcTemplate.update("DELETE FROM TAG WHERE ID=?",id);
+    }
+}
