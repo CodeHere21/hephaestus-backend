@@ -47,7 +47,7 @@ public class PostService implements DAO<Post> {
     public Optional<Post> get(int id) {
         String sql="SELECT ID, TITLE, AUTHOR, BODY, PUBLISHED FROM POST WHERE ID=?";
         Post post=null;
-        try{post=jdbcTemplate.queryForObject(sql, new Object[]{id}, rows);}
+        try{post=jdbcTemplate.queryForObject(sql, rows, id);}
         catch(DataAccessException e){log.info("Blog not found");}
 
         return Optional.ofNullable(post);

@@ -38,6 +38,11 @@ public class CommentService implements DAO<Comment>{
         return jdbcTemplate.query(sql,rows);
     }
 
+    public List<Comment> listByPost(int id){
+        String sql="SELECT ID, BODY, AUTHOR, WRITTEN_ON, POST_ID FROM COMMENT WHERE POST_ID=?";
+        return jdbcTemplate.query(sql,rows, id);
+    }
+
     @Override
     public void create(Comment comment) {
         String sql="INSERT INTO COMMENT(BODY, AUTHOR, WRITTEN_ON, POST_ID) VALUES(?,?,?,?)";
@@ -48,7 +53,7 @@ public class CommentService implements DAO<Comment>{
     public Optional<Comment> get(int id) {
         String sql="SELECT ID, BODY, AUTHOR, WRITTEN_ON, POST_ID FROM COMMENT WHERE ID =?";
         Comment comment=null;
-        try{comment=jdbcTemplate.queryForObject(sql, new Object[]{id},rows);}
+        try{comment=jdbcTemplate.queryForObject(sql, rows,id);}
         catch(DataAccessException e){log.info("Comment not found");}
         return Optional.ofNullable(comment);
     }

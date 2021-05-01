@@ -46,7 +46,7 @@ public class TagService implements DAO<Tag>{
     public Optional<Tag> get(int id) {
         String sql="SELECT ID, LABEL, POST_ID FROM TAG WHERE ID=?";
         Tag tag=null;
-        try{tag=jdbcTemplate.queryForObject(sql, new Object[]{id}, rows);}
+        try{tag=jdbcTemplate.queryForObject(sql, rows, id);}
         catch(DataAccessException e){log.info("Tag not found");}
         return Optional.ofNullable(tag);
     }
