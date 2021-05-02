@@ -37,6 +37,12 @@ public class PostService implements DAO<Post> {
         return jdbcTemplate.query(sql, rows);
     }
 
+    public List<Post> listByTag(String tag){
+        String sql="SELECT * FROM POST INNER JOIN TAG ON POST.ID=TAG.POST_ID WHERE TAG.LABEL=?";
+        return jdbcTemplate.query(sql, rows, tag);
+    }
+
+
     @Override
     public void create(Post post) {
         String sql="INSERT INTO POST(TITLE, AUTHOR, BODY, PUBLISHED) VALUES(?,?,?,?)";
@@ -48,7 +54,7 @@ public class PostService implements DAO<Post> {
         String sql="SELECT ID, TITLE, AUTHOR, BODY, PUBLISHED FROM POST WHERE ID=?";
         Post post=null;
         try{post=jdbcTemplate.queryForObject(sql, rows, id);}
-        catch(DataAccessException e){log.info("Blog not found");}
+        catch(DataAccessException e){log.info("Article not found");}
 
         return Optional.ofNullable(post);
     }

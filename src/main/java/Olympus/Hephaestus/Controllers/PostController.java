@@ -22,6 +22,9 @@ public class PostController {
     @GetMapping(path="{id}")
     public Optional<Post> getPostById(@PathVariable int id){return postService.get(id);}
 
+    @GetMapping(path="/bytag/{tag}")
+    public List<Post> getPostByTag(@PathVariable String tag){return postService.listByTag(tag);}
+
     @PostMapping
     public void writeBlog(@RequestBody Post p){postService.create(p);}
 
