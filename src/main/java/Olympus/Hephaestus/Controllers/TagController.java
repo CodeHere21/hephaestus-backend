@@ -22,13 +22,16 @@ public class TagController {
     @GetMapping(path="{id}")
     public Optional<Tag> getTagById(@PathVariable int id){return tagService.get(id);}
 
+    @GetMapping(path="bypost/{postId}")
+    public List<Tag> getTagByPost(@PathVariable int postId){return tagService.listByPost(postId);}
+
     @PostMapping
     public void makeTag(@RequestBody Tag t){tagService.create(t);}
 
-    @PutMapping
+    @PutMapping(path="{id}")
     public void changeTag(@RequestBody Tag t, @PathVariable int id){ tagService.update(t,id);}
 
-    @DeleteMapping
+    @DeleteMapping(path="{id}")
     public void deleteTag(@PathVariable int id){deleteTag(id);}
 
 }

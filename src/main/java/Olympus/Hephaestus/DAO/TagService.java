@@ -36,6 +36,11 @@ public class TagService implements DAO<Tag>{
         return jdbcTemplate.query(sql,rows);
     }
 
+    public List<Tag> listByPost(int postId){
+        String sql="SELECT * FROM TAG INNER JOIN POST ON TAG.POST_ID=POST.ID WHERE POST.ID=?";
+        return jdbcTemplate.query(sql,rows,postId);
+    }
+
     @Override
     public void create(Tag tag) {
         String sql="INSERT INTO TAG(LABEL, POST_ID) VALUES(?,?)";
