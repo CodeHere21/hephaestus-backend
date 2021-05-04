@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RequestMapping("/posts")
 @RestController
+@CrossOrigin
 public class PostController {
     PostService postService;
 
