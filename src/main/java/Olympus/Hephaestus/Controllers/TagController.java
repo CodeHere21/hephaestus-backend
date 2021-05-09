@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RequestMapping("/tags")
 @RestController
+@CrossOrigin
 public class TagController {
     private TagService tagService;
 
