@@ -26,6 +26,9 @@ public class TagController {
     @GetMapping(path="bypost/{postId}")
     public List<Tag> getTagByPost(@PathVariable int postId){return tagService.listByPost(postId);}
 
+    @GetMapping(path="tagcloud")
+    public List<String> getTagCloud(){return tagService.listLabels();}
+
     @PostMapping
     public void makeTag(@RequestBody Tag t){tagService.create(t);}
 

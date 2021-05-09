@@ -36,6 +36,13 @@ public class TagService implements DAO<Tag>{
         return jdbcTemplate.query(sql,rows);
     }
 
+    public List<String> listLabels(){
+        String sql="SELECT DISTINCT LABEL FROM TAG";
+        return jdbcTemplate.query(sql, (rs, rowNum)->{
+            return rs.getString("LABEL");
+        });
+    }
+
     public List<Tag> listByPost(int postId){
         String sql="SELECT * FROM TAG INNER JOIN POST ON TAG.POST_ID=POST.ID WHERE POST.ID=?";
         return jdbcTemplate.query(sql,rows,postId);
