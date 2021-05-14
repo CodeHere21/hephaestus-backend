@@ -240,14 +240,6 @@ INSERT INTO TAG(LABEL, POST_ID) VALUES('Silence is Golden', 22);
 INSERT INTO TAG(LABEL, POST_ID) VALUES('Silence is Golden', 32);
 INSERT INTO TAG(LABEL, POST_ID) VALUES('Silence is Golden', 43);
 INSERT INTO TAG(LABEL, POST_ID) VALUES('Silence is Golden', 10);
-INSERT INTO TAG(LABEL, POST_ID) VALUES('I came; I saw; I left no trace', 10);
-INSERT INTO TAG(LABEL, POST_ID) VALUES('I came; I saw; I left no trace', 16);
-INSERT INTO TAG(LABEL, POST_ID) VALUES('I came; I saw; I left no trace', 41);
-INSERT INTO TAG(LABEL, POST_ID) VALUES('I came; I saw; I left no trace', 42);
-INSERT INTO TAG(LABEL, POST_ID) VALUES('I came; I saw; I left no trace', 5);
-INSERT INTO TAG(LABEL, POST_ID) VALUES('I came; I saw; I left no trace', 11);
-INSERT INTO TAG(LABEL, POST_ID) VALUES('I came; I saw; I left no trace', 24);
-INSERT INTO TAG(LABEL, POST_ID) VALUES('I came; I saw; I left no trace', 30);
 INSERT INTO TAG(LABEL, POST_ID) VALUES('the Information Age', 10);
 INSERT INTO TAG(LABEL, POST_ID) VALUES('the Information Age', 40);
 INSERT INTO TAG(LABEL, POST_ID) VALUES('the Information Age', 29);
@@ -255,12 +247,7 @@ INSERT INTO TAG(LABEL, POST_ID) VALUES('the Information Age', 46);
 INSERT INTO TAG(LABEL, POST_ID) VALUES('the Information Age', 47);
 INSERT INTO TAG(LABEL, POST_ID) VALUES('the Information Age', 27);
 INSERT INTO TAG(LABEL, POST_ID) VALUES('the Information Age', 12);
-INSERT INTO TAG(LABEL, POST_ID) VALUES('Who said girls can’t code?', 9);
-INSERT INTO TAG(LABEL, POST_ID) VALUES('Who said girls can’t code?', 13);
-INSERT INTO TAG(LABEL, POST_ID) VALUES('Who said girls can’t code?', 37);
-INSERT INTO TAG(LABEL, POST_ID) VALUES('Who said girls can’t code?', 28);
-INSERT INTO TAG(LABEL, POST_ID) VALUES('Who said girls can’t code?', 21);
-INSERT INTO TAG(LABEL, POST_ID) VALUES('Who said girls can’t code?', 48);
+
 
 
 
