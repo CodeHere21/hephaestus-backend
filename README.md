@@ -123,8 +123,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ![BlogUML](Images/BlogUML.png)
 
 #####User Interface
-######Homepage
 
+######Homepage
 ![Screen Shot 2021-05-15 at 9.18.23 PM](Images/Screen Shot 2021-05-15 at 9.18.23 PM.png)
 
 ######Last page
